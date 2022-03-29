@@ -31,6 +31,13 @@ public:
     void addEntity(Entity e);
 
     // READ
+
+    /**
+     * Gets all entities
+     * @return
+     */
+    vector<Entity> getAll();
+
     /**
     * Gets an entity by id
     * @param id the entity id

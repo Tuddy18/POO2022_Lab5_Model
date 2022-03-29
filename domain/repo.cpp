@@ -31,6 +31,11 @@ Entity& Repo::getEntity(string name) {
 }
 
 
+vector<Entity> Repo::getAll() {
+    return entities;
+}
+
+
 Entity& Repo::updateEntity(Entity e) {
     Entity& toUpdate = getEntity(e.getId());
     toUpdate.setName(e.getName());
