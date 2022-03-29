@@ -4,16 +4,19 @@
 
 #include "entity.h"
 
-Entity::Entity() {}
+Entity::Entity(){
+}
 
-Entity::Entity(int id) : id(id) {}
-
-Entity::Entity(int id, const string &name) : id(id), name(name) {}
+Entity::Entity(const int id, const string &name) {
+    this-> id = id;
+    this-> name = name;
+}
 
 Entity::Entity(const Entity &other) {
-    this->name = other.getName();
-    // Here you can choose whether you want to copy the ID or generate a new one
     this->id = other.getId();
+    this->name = other.getName();
+
+//    cout << "Copy constr called\n";
 }
 
 const string &Entity::getName() const {
@@ -28,6 +31,10 @@ int Entity::getId() const {
     return id;
 }
 
+void Entity::setId(int id) {
+    Entity::id = id;
+}
+
 bool Entity::operator==(const Entity &rhs) const {
     return name == rhs.name;
 }
@@ -37,9 +44,31 @@ bool Entity::operator!=(const Entity &rhs) const {
 }
 
 ostream &operator<<(ostream &os, const Entity &entity) {
-    os << "id: " << entity.id << " name: " << entity.name;
+    os << "id: " << entity.id << " name: " << entity.name << endl;
     return os;
 }
 
-Entity::~Entity() = default;
+
+bool Entity::operator<(const Entity &rhs) const {
+    return name < rhs.name;
+}
+
+bool Entity::operator>(const Entity &rhs) const {
+    return rhs < *this;
+}
+
+bool Entity::operator<=(const Entity &rhs) const {
+    return !(rhs < *this);
+}
+
+bool Entity::operator>=(const Entity &rhs) const {
+    return !(*this < rhs);
+}
+
+
+Entity::~Entity(){
+//    cout << "Entity ID: " << this->id << " dies" << endl;
+}
+
+
 

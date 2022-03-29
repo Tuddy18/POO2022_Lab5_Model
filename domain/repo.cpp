@@ -5,20 +5,54 @@
 #include "repo.h"
 
 Repo::Repo() {
-    this->entities = vector<Entity>();
-}
-
-Entity Repo::getEntity(int id) {
-    return this->entities[id];
 }
 
 void Repo::addEntity(Entity e) {
     this->entities.push_back(e);
 }
 
+Entity& Repo::getEntity(int id) {
+    for (Entity& e: entities) {
+        if(e.getId() == id){
+            return e;
+        }
+    }
+    throw std::runtime_error("No entity with specified id found");
+}
+
+
+Entity& Repo::getEntity(string name) {
+    for (Entity& e: entities) {
+        if(e.getName() == name){
+            return e;
+        }
+    }
+    throw std::runtime_error("No entity with specified name found");
+}
+
+
+Entity& Repo::updateEntity(Entity e) {
+    Entity& toUpdate = getEntity(e.getId());
+    toUpdate.setName(e.getName());
+
+    return toUpdate;
+}
+
+void Repo::deleteEntity(Entity e) {
+    Entity toDelete = getEntity(e.getId());
+    auto it = std::find(entities.begin(), entities.end(), toDelete);
+    this->entities.erase(it);
+}
+
 Entity Repo::getBiggestEntity() {
-    // TODO: add implementation
-    return Entity();
+    Entity max;
+    for( Entity& e: entities){
+        if(max < e){
+            max = e;
+        }
+    }
+
+    return max;
 }
 
 vector<Entity> Repo::getMaxEqualEntitiesSequence() {
