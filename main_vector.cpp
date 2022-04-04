@@ -12,9 +12,18 @@
 using namespace std;
 using namespace chrono;
 
+void localMethod(HomemadeVector v){
+    cout << v[0] << endl;
+}
+
 int main() {
 //    vector<int> v;
     HomemadeVector v;
+
+    v.push_back(42);
+    cout << v[0] << endl;
+    localMethod(v);
+    cout << v[0] << endl;
 
     for (int i = 0; i < 1000000; ++i) {
         // Get starting timepoint

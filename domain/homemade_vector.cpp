@@ -21,6 +21,18 @@ HomemadeVector::HomemadeVector() {
     _size = 0;
 }
 
+HomemadeVector::HomemadeVector(const HomemadeVector& other) {
+    this->_capacity = other._capacity;
+    this->_size = other._size;
+
+    auto* newEntities = new int[_capacity];
+
+    for (int i = 0; i < _size; i++) {
+        newEntities[i] = other._entities[i];
+    }
+    this->_entities = newEntities;
+}
+
 void HomemadeVector::push_back(int e) {
     if(_size == _capacity){
         resize();

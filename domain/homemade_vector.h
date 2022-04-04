@@ -19,6 +19,8 @@ public:
 
     HomemadeVector();
 
+    HomemadeVector(const HomemadeVector& other);
+
     void push_back(int e);
 
     int capacity();
