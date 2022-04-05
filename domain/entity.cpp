@@ -4,12 +4,12 @@
 
 #include "entity.h"
 
-Entity::Entity(){
+Entity::Entity() {
 }
 
 Entity::Entity(const int id, const string &name) {
-    this-> id = id;
-    this-> name = name;
+    this->id = id;
+    this->name = name;
 }
 
 Entity::Entity(const Entity &other) {
@@ -48,6 +48,13 @@ ostream &operator<<(ostream &os, const Entity &entity) {
     return os;
 }
 
+istream &operator>>(istream &is, Entity &entity) {
+    cout << "Entity id: " << endl;
+    is >> entity.id;
+    cout << "Entity name: " << endl;
+    is >> entity.name;
+    return is;
+}
 
 bool Entity::operator<(const Entity &rhs) const {
     return name < rhs.name;
@@ -66,7 +73,7 @@ bool Entity::operator>=(const Entity &rhs) const {
 }
 
 
-Entity::~Entity(){
+Entity::~Entity() {
 //    cout << "Entity ID: " << this->id << " dies" << endl;
 }
 

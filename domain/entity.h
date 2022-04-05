@@ -46,6 +46,8 @@ public:
 
     friend ostream &operator<<(ostream &os, const Entity &entity);
 
+    friend istream &operator>>(istream &is, Entity &entity);
+
     virtual ~Entity();
 };
 
