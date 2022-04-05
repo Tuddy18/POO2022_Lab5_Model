@@ -49,20 +49,3 @@ void Repo::deleteEntity(Entity e) {
     this->entities.erase(it);
 }
 
-Entity Repo::getBiggestEntity() {
-    Entity max;
-    for( Entity& e: entities){
-        if(max < e){
-            max = e;
-        }
-    }
-
-    return max;
-}
-
-vector<Entity> Repo::getMaxEqualEntitiesSequence() {
-    // TODO: add implementation
-    return vector<Entity>();
-}
-
-
