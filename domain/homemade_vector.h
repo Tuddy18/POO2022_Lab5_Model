@@ -29,6 +29,8 @@ public:
 
     int operator[](int index);
 
+    HomemadeVector& operator=(const HomemadeVector& other);
+
     ~HomemadeVector();
 };
 

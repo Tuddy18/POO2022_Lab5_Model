@@ -57,3 +57,21 @@ int HomemadeVector::operator[](int index) {
 HomemadeVector::~HomemadeVector() {
     delete[] _entities;
 }
+
+HomemadeVector &HomemadeVector::operator=(const HomemadeVector &other) {
+    this->_capacity = other._capacity;
+    this->_size = other._size;
+    this->_entities = other._entities;
+
+    if(this->_entities != nullptr){
+        delete[] this->_entities;
+    }
+
+    this->_entities = new int[other._capacity];
+
+    for (int i = 0; i < _size; i++) {
+        _entities[i] = other._entities[i];
+    }
+
+    return *this;
+}
